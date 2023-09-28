@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 
 # Change your executable name to something creative!
-set(NAME pico-boilerplate) # <-- Name your project/executable here!
+set(NAME virtualpet) # <-- Name your project/executable here!
 
 include(pimoroni_pico_import.cmake)
 include(pico_sdk_import.cmake)
@@ -11,12 +11,15 @@ project(${NAME} C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
+set(CMAKE_C_COMPILER /bin/arm-none-eabi-gcc)
+set(CMAKE_CXX_COMPILER /bin/arm-none-eabi-g++)
+
 # Initialize the SDK
 pico_sdk_init()
 
 # Add your source files
 add_executable(${NAME}
-    main.cpp # <-- Add source files here!
+    gfx_demo.cpp # <-- Add source files here!
 )
 
 # Include required libraries
@@ -30,7 +33,8 @@ include(libraries/pico_explorer/pico_explorer)
 # Don't forget to link the libraries you need!
 target_link_libraries(${NAME}
     pimoroni_i2c
-    pico_explorer # <-- List libraries here!
+	pico_stdlib
+	gfx_pack
 )
 
 # create map/bin/hex file etc.
