@@ -11,9 +11,6 @@ project(${NAME} C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
-set(CMAKE_C_COMPILER /bin/arm-none-eabi-gcc)
-set(CMAKE_CXX_COMPILER /bin/arm-none-eabi-g++)
-
 # Initialize the SDK
 pico_sdk_init()
 
@@ -26,13 +23,12 @@ add_executable(${NAME}
 # This assumes `pimoroni-pico` is stored alongside your project
 include(common/pimoroni_i2c)
 include(common/pimoroni_bus)
-include(libraries/bitmap_fonts/bitmap_fonts)
-include(libraries/hershey_fonts/hershey_fonts)
-include(libraries/pico_explorer/pico_explorer)
+#include(libraries/bitmap_fonts/bitmap_fonts)
+#include(libraries/hershey_fonts/hershey_fonts)
+include(libraries/gfx_pack/gfx_pack)
 
 # Don't forget to link the libraries you need!
 target_link_libraries(${NAME}
-    pimoroni_i2c
 	pico_stdlib
 	gfx_pack
 )
