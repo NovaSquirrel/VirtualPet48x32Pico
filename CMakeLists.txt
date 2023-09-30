@@ -11,12 +11,24 @@ project(${NAME} C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
+add_compile_definitions(PET_SCREEN_W=64)
+add_compile_definitions(PLATFORM_PICO)
+
 # Initialize the SDK
 pico_sdk_init()
 
 # Add your source files
 add_executable(${NAME}
-    gfx_demo.cpp # <-- Add source files here!
+    source/vpet_pico.cpp
+	vpet/pet_animation.c
+	vpet/pet_foods.c
+	vpet/pet_logic.c
+	vpet/pet_main.c
+	vpet/pet_minigame.c
+	vpet/pet_sprites.c
+	vpet/pet_video.c
+	vpet/random.c
+	vpet/utility.c
 )
 
 # Include required libraries
